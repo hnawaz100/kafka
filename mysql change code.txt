@@ -1,0 +1,28 @@
+mysql -u user -p 
+password 
+
+use testdb;
+
+select * from products;
+
+insert into products (prod_name) values('Husky Rope 50');
+insert into products (prod_name) values('Granite Climbing Helmet');
+insert into products (prod_name) values('Granite Belay2');
+
+UPDATE products SET prod_name = 'Granite Helmet' where prod_id = 2;
+
+INSERT INTO products (col1, col2) VALUES('data1', 'data2' )
+
+--Create trigger for modified data update:
+CREATE TRIGGER updated_updater BEFORE UPDATE ON products FOR EACH ROW SET new.entry_date = CURRENT_TIMESTAMP;
+		
+
+ALTER TABLE products
+ADD COLUMN prod_code VARCHAR(50) AFTER prod_name;
+
+ALTER TABLE products
+ADD COLUMN current_flag VARCHAR(1) AFTER prod_code;
+
+UPDATE products SET prod_code = '7785' where prod_id = 2;
+
+UPDATE products SET current_flag = 'Y' where prod_id = 2;
