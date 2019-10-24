@@ -1,0 +1,7 @@
+--Source Connector configuration. using confluent connector version 5.3.0
+curl -X POST -H "Content-Type: application/json" --data '{"name": "distributed-sql-source", "config": {"connector.class":"io.confluent.connect.jdbc.JdbcSourceConnector", "tasks.max":"1", "connection.url":"jdbc:mysql://localhost/testdb?user=user&password=password", "mode":"timestamp+incrementing", "timestamp.column.name":"entry_date", "incrementing.column.name":"prod_id", "topic.prefix":"psql" }}' http://localhost:8083/connectors
+
+--Sink Connector configuration. using debeziem sql server connecter version: 0.9.5.Finnal
+url -X POST -H "Content-Type: application/json" --data '{"name": "distributed-sql-sink", "config": {"connector.class":"io.confluent.connect.jdbc.JdbcSinkConnector", "tasks.max":"1", "topics":"psqlproducts", "connection.url":"jdbc:sqlserver://host:1433;database=testdb;username=user;password=password", "mode":"insert", "table.name.format":"products", "pk.mode":"record_value", "pk_fields":"record_value","pk.fields":"prod_id","auto.create": "true" ,"auto.evolve": "true"}}' http://localhost:8083/connectors
+
+
