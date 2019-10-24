@@ -1,0 +1,5 @@
+check topics:
+kafka-topics --list --zookeeper localhost:2181
+
+launch consumer:
+kafka-avro-console-consumer --bootstrap-server localhost:9092 --topic psqlproducts --from-beginning
