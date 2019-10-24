@@ -1,0 +1,7 @@
+curl -X GET -i -H "Content-Type: application/vnd.schemaregistry.v1+json" http://localhost:8081/subjects
+
+curl -X GET -i -H "Content-Type: application/vnd.schemaregistry.v1+json" http://localhost:8081/subjects/psqlproducts-value/versions
+
+curl -X GET -i -H "Content-Type: application/vnd.schemaregistry.v1+json" http://localhost:8081/subjects/psqlproducts-value/versions/1
+
+curl -X DELETE http://localhost:8081/subjects/psqlproducts-value/versions/2
