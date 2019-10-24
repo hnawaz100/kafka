@@ -1,0 +1,29 @@
+--Create database (db) on source.
+CREATE DATABASE testdb;
+
+--Source db table;
+CREATE TABLE `products` (
+  `prod_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Prod_name` varchar(100) NOT NULL,
+  `entry_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`prod_id`)
+) 
+
+--CREATE database on destination.
+CREATE DATABASE testdb;
+
+--Destination db table 
+USE [testdb]
+GO
+
+CREATE TABLE [dbo].[products](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Prod_name] [varchar](max) NOT NULL,
+	[prod_id] [int] NOT NULL,
+	[entry_date] [datetime2](7) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)
+) ON [PRIMARY] 
+GO
